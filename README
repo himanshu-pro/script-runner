@@ -38,6 +38,7 @@ SETTINGS:
 COMMON ERRORS:
     `Permission Denied`: The script files provided need to be executable.. (chmod +x <script.sh>)
     `File not found`: The script file wasn't found on the path given.. (Check spelling)
+    `wine not found on path`: For build (especially for windows) `wine` command is needed (brew install wine)
 
 EXAMPLE:
     Let's say you have a vpn installed that requires you to run setup and teardown commands in terminal.
