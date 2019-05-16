@@ -9,8 +9,8 @@ BUILD:
         `npm run build`       (For all)
 
 USAGE:
-    Compressed (.zip) distributions are provided in /bin for direct usage.
-    Unzip the appropriate distribution or build manually as above.
+    Compressed (.zip) distributions are provided in releases(https://github.com/himanshu-pro/script-runner/releases) for direct usage.
+    Unzip the appropriate distribution or build manually (as described in BUILD section)
 
     Run executables from appropriate folder:
         bin/ScriptRunner-darwin-x64     (For macOs)
