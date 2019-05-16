@@ -1,0 +1,30 @@
+{
+  "name": "script_runner",
+  "version": "1.0.0",
+  "description": "Run scripts from menu bar",
+  "scripts": {
+    "start": "electron .",
+    "build": "npm run icons && npm run pack && npm run del:icons",
+    "build:mac": "npm run icons && npm run pack:mac && npm run del:icons",
+    "build:win": "npm run icons && npm run pack:win && npm run del:icons",
+    "build:linux": "npm run icons && npm run pack:linux && npm run del:icons",
+    "pack": "npm run pack:win && npm run pack:mac && npm run pack:linux",
+    "pack:mac": "electron-packager . ScriptRunner --platform=darwin --icon=./icons/mac/app.icns --out=bin --overwrite",
+    "pack:win": "electron-packager . ScriptRunner --platform=win32 --icon=./icons/win/app.ico --out=bin --overwrite",
+    "pack:linux": "electron-packager . ScriptRunner --platform=linux --icon=./icons/png/1024x1024.png --out=bin --overwrite",
+    "icons": "npm run icons:png && electron-icon-generator icons/icon-1024.png",
+    "icons:png": "mkdir -p icons && rsvg-convert assets/icon.svg -h 1024 > icons/icon-1024.png",
+    "del:icons": "rm -rf icons"
+  },
+  "main": "main.js",
+  "author": "himanshu-pro",
+  "license": "CC-BY-4.0",
+  "dependencies": {
+    "electron": "^5.0.1"
+  },
+  "devDependencies": {
+    "electron": "^5.0.1",
+    "electron-icon-generator": "^1.0.2",
+    "electron-packager": "^13.1.1"
+  }
+}

@@ -1,0 +1,60 @@
+ScriptRunner - an electron app for running configured scripts from the menu bar
+
+BUILD:
+    Clone the repo (duh..)
+    Run the following in a terminal:
+        `npm run build:mac`   (For macOs)
+        `npm run build:win`   (For Win)
+        `npm run build:linux` (For Linux)
+        `npm run build`       (For all)
+
+USAGE:
+    Compressed (.zip) distributions are provided in /bin for direct usage.
+    Unzip the appropriate distribution or build manually as above.
+
+    Run executables from appropriate folder:
+        bin/ScriptRunner-darwin-x64     (For macOs)
+        bin/ScriptRunner-win32-x64      (For Win)
+        bin/ScriptRunner-linux-x64      (For Linux)
+
+SETTINGS:
+    The Settings menu item opens the settings file.. It should be of the following format..
+    {
+        "scripts": [
+            // add one object (like below) per script 
+            {
+                // used in menu item as `Run <label>`
+                "label": "myScript",
+
+                // absolute path of the executable
+                "file": "path/to/script>",
+                
+                // (optional) timeout in ms (default is 1000)
+                "timeout": 5000
+            }
+        ]
+    }
+
+COMMON ERRORS:
+    `Permission Denied`: The script files provided need to be executable.. (chmod +x <script.sh>)
+    `File not found`: The script file wasn't found on the path given.. (Check spelling)
+
+EXAMPLE:
+    Let's say you have a vpn installed that requires you to run setup and teardown commands in terminal.
+    Assuming the commands are `vpn start` and `vpn stop` respectively.
+    To be able to run these from the menu bar, follow the steps below:
+
+        Create file `vpn_start_script.sh` with `vpn start` as contents
+        Run the following in terminal: `chmod +x path/to/vpn_start_script.sh`
+        Run ScriptRunner. It should show the app icon in the menubar (top bar).
+        Click on the app icon in the menubar. It should show a dropdown (context menu) with Settings as an option.
+        Click on Settings option. It should open settings.json (in user's app data directory).
+        Add `{"label": "Vpn Start", "file": "path/to/vpn_start_script.sh"}` (as described in SETTINGS section)
+        Save the file. The menu bar app dropdown will now show `Run Vpn Start` option.
+        Click on the `Run Vpn Start` option and the vpn is started..!!
+
+    You can do the same for `vpn stop` command and have `Run Vpn Stop` option in the app dropdown.
+    Note that once added these options are persistent and don't go away even if you quit the app.
+
+    Tip: If you want these scripts available all the time, add the application to your startup programs.
+    This will run the app whenever the system starts
